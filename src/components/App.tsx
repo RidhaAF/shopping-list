@@ -29,6 +29,10 @@ const groceryItems: GroceryItem[] = [
 const App: React.FC = () => {
   const [items, setItems] = useState(groceryItems);
 
+  function handleAddItem(item: GroceryItem) {
+    setItems([...items, item]);
+  }
+
   function handleToggleItem(id: number) {
     setItems((items) =>
       items.map((item) =>
@@ -40,7 +44,7 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <Header />
-      <Form />
+      <Form onAddItem={handleAddItem} />
       <GroceryList items={items} onToggleItem={handleToggleItem} />
       <Footer />
     </div>

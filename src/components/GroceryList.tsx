@@ -3,15 +3,16 @@ import Item from "./Item";
 
 interface GroceryListProps {
   items: GroceryItem[];
+  onToggleItem: (id: number) => void;
 }
 
-const GroceryList: React.FC<GroceryListProps> = ({ items }) => {
+const GroceryList: React.FC<GroceryListProps> = ({ items, onToggleItem }) => {
   return (
     <>
       <div className="list">
         <ul>
           {items.map((item) => (
-            <Item item={item} key={item.id} />
+            <Item item={item} onToggleItem={onToggleItem} key={item.id} />
           ))}
         </ul>
         F

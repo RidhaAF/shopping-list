@@ -1,8 +1,9 @@
+import { useState } from "react";
+import { GroceryItem } from "../interfaces/app_interfaces";
 import Footer from "./Footer";
 import Form from "./Form";
 import GroceryList from "./GroceryList";
 import Header from "./Header";
-import { GroceryItem } from "../interfaces/app_interfaces";
 
 const groceryItems: GroceryItem[] = [
   {
@@ -26,11 +27,21 @@ const groceryItems: GroceryItem[] = [
 ];
 
 const App: React.FC = () => {
+  const [items, setItems] = useState(groceryItems);
+
+  function handleToggleItem(id: number) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  }
+
   return (
     <div className="app">
       <Header />
       <Form />
-      <GroceryList items={groceryItems} />
+      <GroceryList items={items} onToggleItem={handleToggleItem} />
       <Footer />
     </div>
   );

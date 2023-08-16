@@ -2,10 +2,11 @@ import { GroceryItem } from "../interfaces/app_interfaces";
 
 interface ItemProps {
   item: GroceryItem;
+  onDeleteItem: (id: number) => void;
   onToggleItem: (id: number) => void;
 }
 
-const Item: React.FC<ItemProps> = ({ item, onToggleItem }) => {
+const Item: React.FC<ItemProps> = ({ item, onDeleteItem, onToggleItem }) => {
   return (
     <li key={item.id}>
       <input
@@ -16,7 +17,7 @@ const Item: React.FC<ItemProps> = ({ item, onToggleItem }) => {
       <span style={item.checked ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.name}
       </span>
-      <button>&times;</button>
+      <button onClick={() => onDeleteItem(item.id)}>&times;</button>
     </li>
   );
 };

@@ -33,6 +33,10 @@ const App: React.FC = () => {
     setItems([...items, item]);
   }
 
+  function handleDeleteItem(id: number) {
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
+
   function handleToggleItem(id: number) {
     setItems((items) =>
       items.map((item) =>
@@ -45,7 +49,11 @@ const App: React.FC = () => {
     <div className="app">
       <Header />
       <Form onAddItem={handleAddItem} />
-      <GroceryList items={items} onToggleItem={handleToggleItem} />
+      <GroceryList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+      />
       <Footer />
     </div>
   );

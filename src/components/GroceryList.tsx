@@ -5,12 +5,14 @@ interface GroceryListProps {
   items: GroceryItem[];
   onDeleteItem: (id: number) => void;
   onToggleItem: (id: number) => void;
+  onClearItems: () => void;
 }
 
 const GroceryList: React.FC<GroceryListProps> = ({
   items,
   onDeleteItem,
   onToggleItem,
+  onClearItems,
 }) => {
   return (
     <>
@@ -33,7 +35,7 @@ const GroceryList: React.FC<GroceryListProps> = ({
           <option value="name">Urutkan berdasarkan nama barang</option>
           <option value="checked">Urutkan berdasarkan ceklis</option>
         </select>
-        <button>Bersihkan Daftar</button>
+        <button onClick={onClearItems}>Bersihkan Daftar</button>
       </div>
     </>
   );

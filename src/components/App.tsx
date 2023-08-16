@@ -45,6 +45,10 @@ const App: React.FC = () => {
     );
   }
 
+  function handleClearItems() {
+    setItems([]);
+  }
+
   return (
     <div className="app">
       <Header />
@@ -53,6 +57,7 @@ const App: React.FC = () => {
         items={items}
         onDeleteItem={handleDeleteItem}
         onToggleItem={handleToggleItem}
+        onClearItems={handleClearItems}
       />
       <Footer />
     </div>
